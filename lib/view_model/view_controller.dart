@@ -14,7 +14,7 @@ class ViewController extends GetxController {
   static ViewController to = Get.find();
   final LocalDbServices localDb = LocalDbServices();
 
-  List<FileSystemEntity> allSavedFiles = [];
+  List<FileSystemEntity>? allSavedFiles;
   FilePickerResult? currentFilePickerResult;
   File? currentSelectedFile;
   String? currentPickedFileType;
@@ -103,12 +103,12 @@ class ViewController extends GetxController {
     update();
   }
 
-  String getTitle(int index) => basename(allSavedFiles[index].path);
+  String getTitle(int index) => basename(allSavedFiles![index].path);
 
-  DateTime getDate(int index) => allSavedFiles[index].statSync().modified;
+  DateTime getDate(int index) => allSavedFiles![index].statSync().modified;
 
   String getFileSize(int index) => convertFileSize(
-      ViewController.to.allSavedFiles[index].statSync().size, 0);
+      ViewController.to.allSavedFiles![index].statSync().size, 0);
 
   String getAssetIconPath(int index) => getAssetIcon(mime(getTitle(index))!);
 

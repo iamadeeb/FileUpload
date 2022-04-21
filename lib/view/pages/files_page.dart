@@ -39,11 +39,11 @@ class _FilesPageState extends State<FilesPage> {
                 ),
               ),
               GetBuilder<ViewController>(
-                builder: (controller) => controller.allSavedFiles.isNotEmpty
+                builder: (controller) => controller.allSavedFiles != null
                     ? Expanded(
                       child: ListView.builder(
                           physics: const BouncingScrollPhysics(),
-                          itemCount:  ViewController.to.allSavedFiles.length,
+                          itemCount:  ViewController.to.allSavedFiles!.length,
                           itemBuilder: (context, index) {
 
                             return Padding(
